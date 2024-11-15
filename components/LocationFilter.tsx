@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import qs from "query-string";
 
@@ -31,6 +31,8 @@ const LocationFilter = () => {
   const [states, setStates] = useState<IState[]>([]);
 
   const [cities, setCities] = useState<ICity[]>([]);
+
+  const pathname = usePathname();
 
   const router = useRouter();
 
@@ -107,6 +109,8 @@ const LocationFilter = () => {
     setState("");
     setCity("");
   };
+
+  if (pathname !== "/") return null;
 
   return (
     <Container>
