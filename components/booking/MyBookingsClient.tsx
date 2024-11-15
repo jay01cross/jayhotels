@@ -69,6 +69,8 @@ const MyBookingsClient: React.FC<MyBookingsClientsProps> = ({ booking }) => {
 
   const router = useRouter();
 
+  const { toast } = useToast();
+
   const { Hotel, Room } = booking;
 
   if (!Hotel || !Room) return <div>Missing Data...</div>;
@@ -82,8 +84,6 @@ const MyBookingsClient: React.FC<MyBookingsClientsProps> = ({ booking }) => {
   const endDate = moment(booking.endDate).format("MMMM Do YYYY");
 
   const dayCount = differenceInCalendarDays(booking.endDate, booking.startDate);
-
-  const { toast } = useToast();
 
   const handleBookRoom = () => {
     if (!userId)
